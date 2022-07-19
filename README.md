@@ -168,6 +168,50 @@ responsive-viewbox
 
 column-chart
 
+- In this lecture we use the column chart. As we already learnt from chart-axis module this time 
+  we need to display the data on the coordinates. Here we use the scale band as follow:
+  create a scale band as any other scales it is optional if you want padding with values from 0 
+  to 1. The we use the rect svg element and it is rendered by first specifying the x and y 
+  coordinates using the xScale and yScale function respectively and passing the corresponding
+  arguments. The use the xScale bandwidth for the width and height the actual height of the area of
+  the svg parent node of the axis subtracted with the the result of the yScale function. Why this
+  works? 
+
+  Remember the origin of the y coordinate is not in the center or bottom but on the top and starts
+  from the top so the y axis starts from the top and the yScale function will output a value that
+  is count from the top as follows
+
+  yAxis  0   yScale -> starts count 0                                          
+         .                          |                                          
+         .                          |                                          
+         .              ends count (.) From end count subtract yAxis - yScale (.) 
+         .                                                                     .   
+         .                                                                     . 
+         .                                                                     . 
+         .                                                                     .
+         .                                                                     .
+         .                                                                     .
+
+  Hence the last attribute .attr("height", (d) => height - yScale(d.score)). In here we subtract the
+  height by the yScale function result to obtain the height of the bar and place it in the x,y
+  coordinate.
+
+  svg
+    .selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", (d) => xScale(d.subject))
+    .attr("y", (d) => yScale(d.score))
+    .attr("width", (_) => xScale.bandwidth())
+    .attr("height", (d) => height - yScale(d.score));
+
+  In here we also saw useful text style and transformation such as 
+
+  d3.select('div').append("text")
+    .style("text-anchor", "end")
+    .attr("transform", "rotate(-45)");
+
 - For the column chart we use the scale band
   scatter-plot
   line-chart
