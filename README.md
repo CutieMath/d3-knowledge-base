@@ -2,7 +2,7 @@
 
 A repository to keep my learning experience of d3
 
-install-and-configure
+# Install & Configure
 
 - Download browser-sync with npm install browser-sync
 - Create folder with the name of your chose and run npm init
@@ -12,26 +12,26 @@ install-and-configure
 - Add in the scripts object: "start": "browser-sync start -s -f index.html src --no-ui --no-notify"
 - For better user experience install d3 with npm to receive suggestion code from the editor
 
-linear-scales
+# Linear Scales
 
 - `d3.scaleLinear().domain([xs,xe]).range([ys,ye]).clamp(true)` the postfix i and e in x and y stand
   for start and end. The clamp is equal to true to follow strictly the range values min/ys and
   max/ye. This is equivalent to a mathematical function f(x) = y continous and linear. The invert
   method is just f(y) = x
 
-time-scales
+# Time Scales
 
 - `d3.scaleTime() .domain([startmilliepoch, endmilliepoch]) .range([ys, ye]).` `Date()` object can
   be also used instead of a long data type
 
-quantize-scales
+# Quantize Scales
 
 - `d3.scaleQuantize() .domain([xs, xe]) .range([w0, w1, w2, ... , wn])`. The quantize scale can be
   visualise in a pie chart with all the elements with equal proportions. the number of elements in
   the range divides the domain interval into equal proportions and within every portion there will
   be a range of values that are map to the range set of elements AKA bijective
 
-ordinal-scales
+# Ordinal Scales
 
 ```
  d3.scaleOrdinal().domain(['a', 'b', 'c']) .range(['x', 'y', 'z']).
@@ -40,7 +40,7 @@ ordinal-scales
 
 - Also a bijective map e.x f(a) = x, f(b) = y, etc
 
-  loading-data
+# Loading Data
 
 - In this section we saw d3 function such as
 
@@ -53,7 +53,7 @@ ordinal-scales
   `d3.set(dataArray, function())` returns all elements without duplicates and can be retrieve with
   `d3.set(dataArray, function()).values()`
 
-select-dom-elements
+# Select Dom Elements
 
 - One of the most obiquitios functions in d3 found everywhere the d3.select(element). The element
   inside the select funtion can be specified as a string, as an object coming from the document
@@ -62,7 +62,7 @@ select-dom-elements
   more elements retrieving attributes, values, other nodes and more.
   The selectAll does something similar but instead retrieves an array matching the query.
 
-modify-dom-elements
+# Modify Dom Elements
 
 - In this part with use select and the apply modifications like adding attribute with the
   att('attribute', 'value') function.
@@ -78,12 +78,12 @@ modify-dom-elements
      .html('Inventory <b>SALE</b>');
   ```
 
-create-dom-elements
+# Create Dom Elements
 
 - In here we used the select and append function to add another element inside the selected one.
   `d3.select('.className').append('div')`
 
-data-joins
+# Data Joins
 
 - One of the most important modules since here we start combining select and data function. It is
   important to remember how to use it when we fetch data to display with d3.
@@ -106,7 +106,7 @@ data-joins
 - enter = update.enter() .append('elementXYZ') .text(function (d) { return d.name; }) .style('color', 'green')
 - update.merge(enter) .style('width', d => d.score + 'px')
 
-svg-output
+# Svg Output
 
 - Same as the previous module with the difference now of svg rect instead of div as the selection.
   There is also one change in the position of the rect in order to render and svg component the x,y
@@ -118,7 +118,7 @@ svg-output
 
   Remember the i for index
 
-svg-graphics-and-text
+# Svg Graphics & Text
 
 - In this module we use the svg element 'g' for graphics. this time instead of specifying the x,y
   coordinate attributes we use the attr transform and call the function translate(x,y) the g
@@ -146,7 +146,7 @@ svg-graphics-and-text
   <g><rect/><text/></g>
   ```
 
-basic-interactivity
+# Basic Interactivity
 
 - In this module we use the chain function on(event, callback) look on developer.mozilla.org for all
   the events. remember to remove the on prefix in the first parameter of the on function.
@@ -157,7 +157,7 @@ basic-interactivity
   bar.append('rect').on('mouseover', () => d3.select(this).attr('color', 'blue'))
   ```
 
-selection-call
+# Selection Call
 
 - In this module we use the call function from the selection api for better maintainance and
   readability. It works by passing a function in the first argument and then the arguments for the
@@ -167,7 +167,7 @@ selection-call
   ```
   notes that you don't need to pass the selection; it is passed automatically.
 
-margin-convention
+# Margin Convention
 
 - The margin selection follows the convention of 3 variables first the margin object with properties
   top,right,bottom,left, second width and third height. Subtract in width the margins left and right
@@ -198,7 +198,7 @@ margin-convention
   The rect will have start the rendering from the x,y coordinate specified from left,top margins and
   end the rendering on the x,y coordinates specified in the height and width
 
-chart-axes
+# Chart Axes
 
 - The chart axes are used in combination with the d3 scale api for example for the y axis use linear
   scale but remember that the y coordinate is from top to bottom and not the other way, so in the
@@ -221,7 +221,7 @@ chart-axes
 
 - You can use the ticks function for better visualisation
 
-responsive-viewbox
+# Responsive Viewbox
 
 - If the root svg element targeted for resizing already has the attribute viewbox then you can
   create a function as use call(function) on the root svg element.
@@ -252,7 +252,7 @@ responsive-viewbox
   }
   ```
 
-column-chart
+# Column Chart
 
 - In this lecture we use the column chart. As we already learnt from chart-axis module this time
   we need to display the data on the coordinates. Here we use the scale band as follow:
@@ -305,14 +305,15 @@ column-chart
      .attr("transform", "rotate(-45)");
   ```
 
-- For the column chart we use the scale band
   scatter-plot
+
   line-chart
+
   area-chart
+
   debug-devtools
+
   animated-transitions
   reusable-transitions
   animate-update-pattern
   animate-axis-updates
-
-//reate line chart
