@@ -131,16 +131,33 @@ chart-axes
 
 responsive-viewbox
 
-- In this module we use responsivefy function. It consist of using the viewbox and the attribute preserveAspectRatio xMinYMid so it always display the root svg content wheather the page is zoom in or zoom out the content will be displayed without losing the visible area. The responsify function it is used as argument in the call function.
+- If the root svg element targeted for resizing already has the attribute viewbox then you can
+  create a function as use call(function) on the root svg element.
+- The function consist first in getting the parent node of the root svg (normally it is a div)
+- Then extract the define width and height from svg to calculate the aspect ratio.
+- call resize function
+- select window element and onresize event pass the resize function as parameter
+- Create resize function inside the parent function; it consist of getting the width from the
+  parent node of the svg which doesn't have a fixed width the assign that new width to the svg
+  and compute the height by rouding the division of the new width and aspect ratio then assign
+  that to the svg height.
+- Note the
+- Preserve Aspect Ratio was used to keep the alignment of the svg viewbox in this case it will
+  align from the center see this link for a better explenation
+  https://viewbox.club/tips/07.SVG_preserveAspectRatio.html
+
   function responsivefy(svg) {
+  // get container + svg aspect ratio
   var container = d3.select(svg.node().parentNode),
-  width = parseInt(svg.style("width")),
-  height = parseInt(svg.style("height")),
-  aspect = width / height;
-  svg.attr("viewBox", "0 0 " + width + " " + height)
-  .attr("preserveAspectRatio", "xMinYMid")
-  .call(resize);
-  d3.select(window).on("resize." + container.attr("id"), resize);
+  aspect = parseInt(svg.style("width")) / parseInt(svg.style("height"));
+  resize();
+  // to register muktiple listeners for same event type,
+  // you need to add namespace, i.e., 'click.foo'
+  // necessary if you call invoke this function for multiple svgs
+  // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+  d3.select(window).on("resize." + 1, resize);
+
+  // get width of container and resize svg to fit it
   function resize() {
   var targetWidth = parseInt(container.style("width"));
   svg.attr("width", targetWidth);
