@@ -13,12 +13,13 @@ install-and-configure
 
 linear-scales
 
-- d3.scaleLinear().domain([xs,xe]).range([ys,ye]).clmap(true) the postfix i and e in x and y stand for start and end. The clamp is equal to true to follow strictly the range values min/ys and max/ye.
+- d3.scaleLinear().domain([xs,xe]).range([ys,ye]).clamp(true) the postfix i and e in x and y stand for start and end. The clamp is equal to true to follow strictly the range values min/ys and max/ye.
   This is equivalent to a mathematical function f(x) = y continous and linear. The invert method is just f(y) = x
 
 time-scales
 
-- d3.scaleTime() .domain([startmilliepoch, endmilliepoch]) .range([ys, ye]). Date() object can be also used instead of a long data type
+- d3.scaleTime() .domain([startmilliepoch, endmilliepoch]) .range([ys, ye]). Date() object can be also used instead of a
+  long data type
 
 quantize-scales
 
@@ -64,7 +65,7 @@ data-joins
   To merge the data that match with elements and data that doen't use the merge function
 - update = d3.select('.chart') .selectAll('div') .data(scores, function (d) { return d ? d.name : this.innerText; }) .style('color', 'blue')
 - update.exit().remove()
-- enter = update.enter() .append('div') .text(function (d) { return d.name; }) .style('color', 'green')
+- enter = update.enter() .append('elementXYZ') .text(function (d) { return d.name; }) .style('color', 'green')
 - update.merge(enter) .style('width', d => d.score + 'px')
 
 svg-output
@@ -85,7 +86,7 @@ svg-graphics-and-text
 basic-interactivity
 
 - In this module we use the chain function on(event, callback) look on developer.mozilla.org for all the events. remember to remove the on prefix in the first parameter of the on function. https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Events
-- Another important point is that in the callback you can use the 'this' keyboard to refer to the current element with the iteration. for example
+- Another important point is that in the callback you can use the 'this' keyword to refer to the current element with the iteration. for example
   bar.append('rect').on('mouseover', () => d3.select(this).attr('color', 'blue'))
 
 selection-call
