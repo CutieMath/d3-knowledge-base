@@ -104,7 +104,15 @@ A repository to keep my learning experience of D3.js
 
 - update.exit().remove()
 - enter = update.enter() .append('elementXYZ') .text(function (d) { return d.name; }) .style('color', 'green')
-- update.merge(enter) .style('width', d => d.score + 'px')
+- update.merge(enter) .style('width', d => d.score + 'px')  
+  
+```
+Yuxin:  
+- Enter selection: DOM element not exist, data exist
+- Exit selection: DOM element exist, data not exist
+- Update selection: Have both
+- Refers to: https://bost.ocks.org/mike/join/
+```
 
 # Svg Output
 
