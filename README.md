@@ -2,7 +2,7 @@
 
 A repository to keep my learning experience of D3.js
 
-# Install & Configure
+# Install & Configure (01-install-and-configure)
 
 - Download browser-sync with npm install browser-sync
 - Create folder with the name of your chose and run npm init
@@ -12,26 +12,26 @@ A repository to keep my learning experience of D3.js
 - Add in the scripts object: "start": "browser-sync start -s -f index.html src --no-ui --no-notify"
 - For better user experience install D3.js with npm to receive suggestion code from the editor
 
-# Linear Scales
+# Linear Scales (02-linear-scales)
 
 - `d3.scaleLinear().domain([xs,xe]).range([ys,ye]).clamp(true)` the postfix i and e in x and y stand
   for start and end. The clamp is equal to true to follow strictly the range values min/ys and
   max/ye. This is equivalent to a mathematical function f(x) = y continuous and linear. The invert
   method is just f(y) = x
 
-# Time Scales
+# Time Scales (03-time-scales)
 
 - `d3.scaleTime() .domain([startmilliepoch, endmilliepoch]) .range([ys, ye]).` `Date()` object can
   be also used instead of a long data type
 
-# Quantize Scales
+# Quantize Scales (04-quantize-scales)
 
 - `d3.scaleQuantize() .domain([xs, xe]) .range([w0, w1, w2, ... , wn])`. The quantize scale can be
   visualise in a pie chart with all the elements with equal proportions. the number of elements in
   the range divides the domain interval into equal proportions and within every portion there will
   be a range of values that are map to the range set of elements AKA bijective
 
-# Ordinal Scales
+# Ordinal Scales (05-ordinal-scale)
 
 ```
  d3.scaleOrdinal().domain(['a', 'b', 'c']) .range(['x', 'y', 'z']).
@@ -40,7 +40,7 @@ A repository to keep my learning experience of D3.js
 
 - Also a bijective map e.x f(a) = x, f(b) = y, etc
 
-# Loading Data
+# Loading Data (06-loading-data)
 
 - In this section we saw D3 function such as
 
@@ -53,7 +53,7 @@ A repository to keep my learning experience of D3.js
   `d3.set(dataArray, function())` returns all elements without duplicates and can be retrieve with
   `d3.set(dataArray, function()).values()`
 
-# Select Dom Elements
+# Select Dom Elements (07-select-dom-elements)
 
 - One of the most ubiquitous functions in d3.js found everywhere the d3.select(element). The element
   inside the select function can be specified as a string, as an object coming from the document
@@ -62,7 +62,7 @@ A repository to keep my learning experience of D3.js
   more elements retrieving attributes, values, other nodes and more.
   The selectAll does something similar but instead retrieves an array matching the query.
 
-# Modify Dom Elements
+# Modify Dom Elements (08-modify-dom-elements)
 
 - In this part with use select and the apply modifications like adding attribute with the
   att('attribute', 'value') function.
@@ -78,12 +78,12 @@ A repository to keep my learning experience of D3.js
      .html('Inventory <b>SALE</b>');
   ```
 
-# Create Dom Elements
+# Create Dom Elements (09-create-dom-elements)
 
 - In here we used the select and append function to add another element inside the selected one.
   `d3.select('.className').append('div')`
 
-# Data Joins
+# Data Joins (10-data-joins)
 
 - One of the most important modules since here we start combining select and data function. It is
   important to remember how to use it when we fetch data to display with D3.
@@ -106,7 +106,7 @@ A repository to keep my learning experience of D3.js
 - enter = update.enter() .append('elementXYZ') .text(function (d) { return d.name; }) .style('color', 'green')
 - update.merge(enter) .style('width', d => d.score + 'px')
 
-# Svg Output
+# Svg Output (11-svg-output)
 
 - Same as the previous module with the difference now of svg rect instead of div as the selection.
   There is also one change in the position of the rect in order to render and svg component the x,y
@@ -118,7 +118,7 @@ A repository to keep my learning experience of D3.js
 
   Remember the i for index
 
-# Svg Graphics & Text
+# Svg Graphics & Text (12-svg-graphics-and-text)
 
 - In this module we use the svg element 'g' for graphics. This time instead of specifying the x,y
   coordinate attributes we use the attr transform and call the function translate(x,y) the g
@@ -146,7 +146,7 @@ A repository to keep my learning experience of D3.js
   <g><rect/><text/></g>
   ```
 
-# Basic Interactivity
+# Basic Interactivity (13-basic-interactivity)
 
 - In this module we use the chain function on(event, callback) look on developer.mozilla.org for all
   the events. Remember to remove the on prefix in the first parameter of the on function.
@@ -157,7 +157,7 @@ A repository to keep my learning experience of D3.js
   bar.append('rect').on('mouseover', () => d3.select(this).attr('color', 'blue'))
   ```
 
-# Selection Call
+# Selection Call (14-selection-call)
 
 - In this module we use the call function from the selection API for better maintenance and
   readability. It works by passing a function in the first argument and then the arguments for the
@@ -167,7 +167,7 @@ A repository to keep my learning experience of D3.js
   ```
   notes that you don't need to pass the selection; it is passed automatically.
 
-# Margin Convention
+# Margin Convention (15-margin-convention)
 
 - The margin selection follows the convention of 3 variables first the margin object with properties
   top,right,bottom,left, second width and third height. Subtract in width the margins left and right
@@ -198,7 +198,7 @@ A repository to keep my learning experience of D3.js
   The rect will have start the rendering from the x,y coordinate specified from left,top margins and
   end the rendering on the x,y coordinates specified in the height and width
 
-# Chart Axes
+# Chart Axes (16-chart-axes)
 
 - The chart axes are used in combination with the d3 scale API for example for the y axis use linear
   scale but remember that the y coordinate is from top to bottom and not the other way, so in the
@@ -221,7 +221,7 @@ A repository to keep my learning experience of D3.js
 
 - You can use the ticks function for better visualization
 
-# Responsive Viewbox
+# Responsive Viewbox (17-responsive-viewbox)
 
 - If the root svg element targeted for re-sizing already has the attribute viewBox then you can
   create a function as use call(function) on the root svg element.
@@ -252,7 +252,7 @@ A repository to keep my learning experience of D3.js
   }
   ```
 
-# Column Chart
+# Column Chart (18-column-chart)
 
 - In this lecture we use the column chart. As we already learned from chart-axis module this time
   we need to display the data on the coordinates. Here we use the scale band as follow:
@@ -305,9 +305,73 @@ A repository to keep my learning experience of D3.js
      .attr("transform", "rotate(-45)");
   ```
 
-  Scatter Plot
+# Scatter Plot (19-scatter-plot)
 
-# Line Chart
+- In this module we use the nice() function so that the domain start and ends are rounded to the
+  nearest value.
+- Here we use what we learned in Chart Axes module with the addition of rendering circles in the
+  coordinate system. For that we use the scaleSqrt() function so the difference of the radius are
+  not disproportionately high.
+- To create a chart like this from scratch start first with the chart axis then create a G
+  SVG element and place it with the xScale and yScale function then using the transform attribute
+  and translate function. Then use the G element object created from d3 and render circles as well
+  as text using without the need to specify the x,y coordinate as it was already done in the
+  transform attribute. For the radius use the scaleSqrt() function.
+
+  ```
+  d3.json("./data.json", function (err, data) {
+    var yScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data, (d) => d.expectancy))
+      .range([height, 0])
+      .nice();
+
+    var yAxis = d3.axisLeft(yScale);
+
+    svg.call(yAxis);
+
+    var xScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data, (d) => d.cost))
+      .range([0, width])
+      .nice();
+
+    var xAxis = d3.axisBottom(xScale).ticks(5);
+    svg.append("g").attr("transform", `translate(0, ${height})`).call(xAxis);
+
+    var rScale = d3
+      .scaleSqrt()
+      .domain([0, d3.max(data, (d) => d.population)])
+      .range([0, 40]);
+
+    var circles = svg
+      .selectAll(".ball")
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("class", "ball")
+      .attr("transform", (d) => {
+        return `translate(${xScale(d.cost)}, ${yScale(d.expectancy)})`;
+      });
+
+    circles
+      .append("circle")
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("r", (d) => rScale(d.population))
+      .style("fill-opacity", 0.5)
+      .style("fill", "steelblue");
+
+    circles
+      .append("text")
+      .style("text-anchor", "middle")
+      .style("fill", "black")
+      .attr("y", 4)
+      .text((d) => d.code);
+  });
+  ```
+
+# Line Chart (20-line-chart)
 
 - In line chart we still used what we learned in Chart Axis module. In addition we need to render a
   line in the x,y coordinate. In order to do that we need to create a line that is connected through
@@ -346,7 +410,7 @@ A repository to keep my learning experience of D3.js
 
   ```
 
-# Area Chart
+# Area Chart (21-area-chart)
 
 - Similar as line chart this time with the difference of using the area function instead of line.
   The area function works similar to line with the addition of a new fluent method (y0) and
@@ -367,7 +431,7 @@ A repository to keep my learning experience of D3.js
   .style('fill', (d, i) => ['#FF9900', '#3369E8'][i])
   ```
 
-# Debug devtools
+# Debug devtools (22-debug-devtools)
 
 - The `$0` in the console when you select an element in the Elements tab the console will display
   that Dom element.
@@ -377,7 +441,7 @@ A repository to keep my learning experience of D3.js
 - In this module the filter function such as `d3.selectAll(element).filter(callback)` was used to
   filter elements satisfying the callback condition.
 
-# Animated transitions
+# Animated transitions (23-animated-transitions)
 
 - Really interesting module. Transitions in d3 works in a sequential way when you modify the
   attributes for example when setting the width with a transition and then the height with another
@@ -402,7 +466,7 @@ A repository to keep my learning experience of D3.js
       .style('background-color', 'purple')
   ```
 
-# Reusable transitions
+# Reusable transitions (24-reusable-transitions)
 
 - In this module we saw different ways of reusing transitions such as getting a transition object
   by calling `t = d3.transition().duration(600).delay(600)` and assign it to a variable then to
@@ -440,8 +504,78 @@ A repository to keep my learning experience of D3.js
    }
   ```
 
-# Animate update pattern
+# Animate update pattern (25-animate-update-pattern)
 
-- data join, transition first way of reusing it, bar chart
+- Here we use what we learn in data join, transition (first option for reusing transitions). The
+  code might look a bit complicated but conceptually it is really simple. Remember that transition
+  happen as you declare it sequentially in the code. So if you interact with the code you'll see
+  that first the bar shrinks from top to bottom, the rest of the bars are updated and a new bar
+  expands from bottom to top. As you can see in the code below the transitions are use first in the
+  exit function (elements that doesn't match data) then another transition in the update state (data
+  and elements that match), and then another transition in the enter function (data that doesn't
+  match with elements)
 
-# Animate axis updates
+  ```
+  function render(subject = "math") {
+    var t = d3.transition().duration(1000);
+
+    var update = svg.selectAll("rect").data(
+      data.filter((d) => d[subject]),
+      (d) => d.name
+    );
+
+    update.exit().transition(t).attr("y", height).attr("height", 0).remove();
+
+    update
+      .transition(t)
+      .delay(1000)
+      .attr("y", (d) => yScale(d[subject]))
+      .attr("height", (d) => height - yScale(d[subject]));
+
+    update
+      .enter()
+      .append("rect")
+      .attr("y", height)
+      .attr("height", 0)
+      .attr("x", (d) => xScale(d.name))
+      .attr("width", (d) => xScale.bandwidth())
+      .transition(t)
+      .delay(update.exit().size() ? 2000 : 0)
+      .attr("y", (d) => yScale(d[subject]))
+      .attr("height", (d) => height - yScale(d[subject]));
+  }
+
+  ```
+
+# Animate axis updates (26-animate-axis-updates)
+
+- In this module we used pretty much the same logic from the previous one with the only difference
+  that this time we also animate the Y axis. In the code below these were the only additions. As you
+  can see we now get a variable yAxis which is just a G SVG element that acts as a container for the
+  yAxis. This will be used in the render function to call the transition by updating first the
+  domain and range with the new values using the call method.
+
+  ```
+  ...
+  var yAxis = svg
+    .append('g')
+    .call(d3.axisLeft(yScale));
+  ...
+
+  function render(subject = "math") {
+  ...
+  yScale.domain([0, d3.max(data, d => d[subject])]);
+  yAxis
+    .transition(t)
+    .delay(1000)
+    .call(d3.axisLeft(yScale));
+  ...
+  ```
+
+# References
+
+- Ben Clinkinbeard, Build Interactive JavaScript Charts with D3 v4, 2016
+  https://egghead.io/courses/build-interactive-javascript-charts-with-d3-v4
+
+- Ben Clinkinbeard, Github Repo
+  https://github.com/bclinkinbeard/egghead-d3v4
