@@ -307,7 +307,7 @@ A repository to keep my learning experience of D3.js
 
   Scatter Plot
 
-  Line Chart
+# Line Chart
 
 - In line chart we still used what we learned in Chart Axis module. In addition we need to render a
   line in the x,y coordinate. In order to do that we need to create a line that is connected through
@@ -326,6 +326,7 @@ A repository to keep my learning experience of D3.js
     .line()
     .x((d) => xScale(d.date))
     .y((d) => yScale(d.close))
+    // This smoothes the line path giving a curve Look and Feel
     .curve(d3.curveCatmullRom.alpha(0.5));
 
   // Here we create the path svg element and in the d attribute we pass the line function with the
@@ -345,11 +346,102 @@ A repository to keep my learning experience of D3.js
 
   ```
 
-  area-chart
+# Area Chart
 
-  debug-devtools
+- Similar as line chart this time with the difference of using the area function instead of line.
+  The area function works similar to line with the addition of a new fluent method (y0) and
+  renaming the y() method for y1(). The y0 function tells the area how to fill the path imagine
+  a holding a rod at their end with your hands stretched so that the rod is held horizontally by
+  moving it upwards the points that were above are filled with smaller area and the points that were
+  below are filled with bigger area; the contrary happens when the rod is moved downwards.
 
-  animated-transitions
-  reusable-transitions
-  animate-update-pattern
-  animate-axis-updates
+  ```
+  // similar to line with the below difference
+  var area = d3.area()
+    ...
+    .y0(yScale(yScale.domain()[0]))
+    .y1(d => yScale(d.close))
+    ...
+
+  When rendering the path you can use the one below to differenciate areas by different colors
+  .style('fill', (d, i) => ['#FF9900', '#3369E8'][i])
+  ```
+
+# Debug devtools
+
+- The `$0` in the console when you select an element in the Elements tab the console will display
+  that Dom element.
+- The `$0.__data__` will output in the console the data that is being render by that element
+- Modify the element from the console if you have it available by using `d3.select($0)`
+- In the Styles tab you can change properties to see it render in the browser as you edit the styles
+- In this module the filter function such as `d3.selectAll(element).filter(callback)` was used to
+  filter elements satisfying the callback condition.
+
+# Animated transitions
+
+- Really interesting module. Transitions in d3 works in a sequential way when you modify the
+  attributes for example when setting the width with a transition and then the height with another
+  transition; it will be animated based on the sequential attribute changes.
+
+  ```
+  // Note here the three transition happen sequentially starting first with width then  height and
+  then color. You can change it by declaring first in the code the height then width and color.
+  d3.select('#block')
+    .transition()
+      .duration(600)
+      .delay(750)
+      .ease(d3.easeBounceOut)
+      .style('width', '400px')
+    .transition()
+      .duration(600)
+      .ease(d3.easeBounceOut)
+      .style('height', '600px')
+    .transition()
+      .duration(2000)
+      .ease(d3.easeQuadOut)
+      .style('background-color', 'purple')
+  ```
+
+# Reusable transitions
+
+- In this module we saw different ways of reusing transitions such as getting a transition object
+  by calling `t = d3.transition().duration(600).delay(600)` and assign it to a variable then to
+  animate an element attribute change pass the transition object to transition method such as  
+  `d3.select(element).transition(t).style('width','400px')` REMEMBER not to get the transition
+  object globally since the transition is called from the moment the browser renders; call it
+  instead within a function scope.
+
+  ```
+  function go () {
+    var t = d3.transition()
+      .delay(1000)
+      .duration(1000);
+
+    d3.selectAll('.block')
+      .transition(t)
+      .style('width', '400px');
+  }
+  ```
+
+- The other way of reusing transitions is by using the call method from the transition API, similar
+  to the call method from the selection API. This time the call method will pass a transition object
+  instead of an element object.
+
+  ```
+   function configure (t, delay, duration) {
+     return t.delay(delay).duration(duration);
+   }
+
+   function goNow () {
+     d3.selectAll('.block')
+       .transition()
+       .call(configure, 1000, 1000)
+       .style('height', '200px');
+   }
+  ```
+
+# Animate update pattern
+
+- data join, transition first way of reusing it, bar chart
+
+# Animate axis updates
