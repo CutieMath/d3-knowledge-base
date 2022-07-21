@@ -1,6 +1,6 @@
-# d3-knowledge-base
+# D3-knowledge-base
 
-A repository to keep my learning experience of d3
+A repository to keep my learning experience of D3.js
 
 # Install & Configure
 
@@ -10,13 +10,13 @@ A repository to keep my learning experience of d3
 - Create src directory and add a js file with the name of your choice and in your index.html add the
   script pointing to the path of that file.
 - Add in the scripts object: "start": "browser-sync start -s -f index.html src --no-ui --no-notify"
-- For better user experience install d3 with npm to receive suggestion code from the editor
+- For better user experience install D3.js with npm to receive suggestion code from the editor
 
 # Linear Scales
 
 - `d3.scaleLinear().domain([xs,xe]).range([ys,ye]).clamp(true)` the postfix i and e in x and y stand
   for start and end. The clamp is equal to true to follow strictly the range values min/ys and
-  max/ye. This is equivalent to a mathematical function f(x) = y continous and linear. The invert
+  max/ye. This is equivalent to a mathematical function f(x) = y continuous and linear. The invert
   method is just f(y) = x
 
 # Time Scales
@@ -42,7 +42,7 @@ A repository to keep my learning experience of d3
 
 # Loading Data
 
-- In this section we saw d3 function such as
+- In this section we saw D3 function such as
 
   ```
   d3.json(path, function()), d3.csv(path, function()), d3.json(path, function())
@@ -55,9 +55,9 @@ A repository to keep my learning experience of d3
 
 # Select Dom Elements
 
-- One of the most obiquitios functions in d3 found everywhere the d3.select(element). The element
-  inside the select funtion can be specified as a string, as an object coming from the document
-  object provided by browsers such as document.links or can be also a css query such
+- One of the most ubiquitous functions in d3.js found everywhere the d3.select(element). The element
+  inside the select function can be specified as a string, as an object coming from the document
+  object provided by browsers such as document.links or can be also a CSS query such
   as 'a:nth-child(2)'. After the element has been selected then you can manipulated by appending
   more elements retrieving attributes, values, other nodes and more.
   The selectAll does something similar but instead retrieves an array matching the query.
@@ -68,7 +68,7 @@ A repository to keep my learning experience of d3
   att('attribute', 'value') function.
   Adding classes in the classed function classed('class',booleanValue)
   very useful to change style dynamically or css attributes to the element. Also we saw the
-  html('html text') meaning the elements inside the text will be parsed to html. In addition we saw
+  html('HTML text') meaning the elements inside the text will be parsed to HTML. In addition we saw
   the Text element which adds text but don't get parsed to anything
 
   ```
@@ -86,14 +86,14 @@ A repository to keep my learning experience of d3
 # Data Joins
 
 - One of the most important modules since here we start combining select and data function. It is
-  important to remember how to use it when we fetch data to display with d3.
+  important to remember how to use it when we fetch data to display with D3.
 - The procedure start with the following
 - selectAll(elementXYZ) -> data(data, callback) - Use the callback to check if members of the data
-  set match with html elements.
-  Data that match with elements there is not need to retrieve as it is already retrived by default.
+  set match with HTML elements.
+  Data that match with elements there is not need to retrieve as it is already retrieved by default.
   Elements that doesn't match with data can be retrieve by using the exit() function.
   Data that doesn't match with elements can be retrieve by using the enter() function.
-  To merge the data that match with elements and data that doen't use the merge function
+  To merge the data that match with elements and data that doesn't use the merge function
 
   ```
   update = d3.select('.chart')
@@ -120,9 +120,9 @@ A repository to keep my learning experience of d3
 
 # Svg Graphics & Text
 
-- In this module we use the svg element 'g' for graphics. this time instead of specifying the x,y
+- In this module we use the svg element 'g' for graphics. This time instead of specifying the x,y
   coordinate attributes we use the attr transform and call the function translate(x,y) the g
-  componenet will contain the svg subelements.
+  component will contain the svg sub elements.
 
   ```
   var g = selectAll('g')
@@ -149,17 +149,17 @@ A repository to keep my learning experience of d3
 # Basic Interactivity
 
 - In this module we use the chain function on(event, callback) look on developer.mozilla.org for all
-  the events. remember to remove the on prefix in the first parameter of the on function.
+  the events. Remember to remove the on prefix in the first parameter of the on function.
   https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Events
 - Another important point is that in the callback you can use the 'this' keyword to refer to the
-  current element with the iteration. for example
+  current element with the iteration. For example
   ```
   bar.append('rect').on('mouseover', () => d3.select(this).attr('color', 'blue'))
   ```
 
 # Selection Call
 
-- In this module we use the call function from the selection api for better maintainance and
+- In this module we use the call function from the selection API for better maintenance and
   readability. It works by passing a function in the first argument and then the arguments for the
   function that has been passed. The function use as the first argument will have this signature
   ```
@@ -187,7 +187,7 @@ A repository to keep my learning experience of d3
      .attr('transform', `translate(${margin.left}, ${margin.top})`);
   ```
 
-- Why this works? becuase the margin left and top work as the x,y coordinate for the g svg element
+- Why this works? Because the margin left and top work as the x,y coordinate for the g svg element
   and the width and height used in subsequent elements will be used as the margin for the right and
   bottom margin for example
 
@@ -200,7 +200,7 @@ A repository to keep my learning experience of d3
 
 # Chart Axes
 
-- The chart axes are used in combination with the d3 scale api for example for the y axis use linear
+- The chart axes are used in combination with the d3 scale API for example for the y axis use linear
   scale but remember that the y coordinate is from top to bottom and not the other way, so in the
   range you need to specify height, 0 instead of 0,height use axisLeft and pass the linear scale
   for the y axis and then use the call function from the svg root object created with d3
@@ -219,11 +219,11 @@ A repository to keep my learning experience of d3
   svg.append("g").attr("transform", `translate(0, ${height})`).call(xAxis);
   ```
 
-- You can use the ticks function for better visualisation
+- You can use the ticks function for better visualization
 
 # Responsive Viewbox
 
-- If the root svg element targeted for resizing already has the attribute viewbox then you can
+- If the root svg element targeted for re-sizing already has the attribute viewBox then you can
   create a function as use call(function) on the root svg element.
 - The function consist first in getting the parent node of the root svg (normally it is a div)
 - Then extract the define width and height from svg to calculate the aspect ratio.
@@ -231,11 +231,11 @@ A repository to keep my learning experience of d3
 - select window element and onresize event pass the resize function as parameter
 - Create resize function inside the parent function; it consist of getting the width from the
   parent node of the svg which doesn't have a fixed width the assign that new width to the svg
-  and compute the height by rouding the division of the new width and aspect ratio then assign
+  and compute the height by routing the division of the new width and aspect ratio then assign
   that to the svg height.
 - Note the
-- Preserve Aspect Ratio was used to keep the alignment of the svg viewbox in this case it will
-  align from the center see this link for a better explenation
+- Preserve Aspect Ratio was used to keep the alignment of the SVG viewBox in this case it will
+  align from the center see this link for a better explanation
   https://viewbox.club/tips/07.SVG_preserveAspectRatio.html
 
   ```
@@ -254,13 +254,13 @@ A repository to keep my learning experience of d3
 
 # Column Chart
 
-- In this lecture we use the column chart. As we already learnt from chart-axis module this time
+- In this lecture we use the column chart. As we already learned from chart-axis module this time
   we need to display the data on the coordinates. Here we use the scale band as follow:
   create a scale band as any other scales it is optional if you want padding with values from 0
-  to 1. The we use the rect svg element and it is rendered by first specifying the x and y
+  to 1. The we use the RECT SVG element and it is rendered by first specifying the x and y
   coordinates using the xScale and yScale function respectively and passing the corresponding
   arguments. The use the xScale bandwidth for the width and height the actual height of the area of
-  the svg parent node of the axis subtracted with the the result of the yScale function. Why this
+  the SVG parent node of the axis subtracted with the result of the yScale function. Why this
   works?
 
   Remember the origin of the y coordinate is not in the center or bottom but on the top and starts
@@ -305,9 +305,45 @@ A repository to keep my learning experience of d3
      .attr("transform", "rotate(-45)");
   ```
 
-  scatter-plot
+  Scatter Plot
 
-  line-chart
+  Line Chart
+
+- In line chart we still used what we learned in Chart Axis module. In addition we need to render a
+  line in the x,y coordinate. In order to do that we need to create a line that is connected through
+  specific values in the coordinate system. d3.line is a function that receives the data and it can
+  return all the set of x and y values in a format for the PATH SVG element. In is important to
+  understand how the PATH SVG element works (see the link below) but for simplicity think about it
+  as an element that only need a d attribute such as <path d="M23,2 L34,3"/> the M and L are
+  commands for the path and the numbers are coordinates. The path will be connected and that it is
+  how you get a line chart.
+
+  ```
+
+  // Here we create the line to obtain the set of all coordinates by passing the values line(values)
+  // The result will be something like "M2,4L12,14L22,4" which will be use for the path element
+  var line = d3
+    .line()
+    .x((d) => xScale(d.date))
+    .y((d) => yScale(d.close))
+    .curve(d3.curveCatmullRom.alpha(0.5));
+
+  // Here we create the path svg element and in the d attribute we pass the line function with the
+  // data values. a string will be returned like "M2,4L12,14L22,4" this is just random and might no
+  // be necessarily the actual string
+  svg
+    .selectAll(".line")
+    .data(data)
+    .enter()
+    .append("path")
+    .attr("class", "line")
+    .attr("d", (d) => line(d.values))
+    //Here we can render the line with different colors as the data is an array of 2 elements
+    .style("stroke", (d, i) => ["#FF9900", "#3369E8"][i])
+    .style("stroke-width", 2)
+    .style("fill", "none");
+
+  ```
 
   area-chart
 
